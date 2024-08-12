@@ -49,7 +49,7 @@ class Clientes
         try {
             $query = "INSERT INTO clientes (Nombres, Direccion, Telefono, Cedula, Correo, estado) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->con->prepare($query);
-            $stmt->bind_param("sssss", $Nombres, $Direccion, $Telefono, $Cedula, $Correo);
+            $stmt->bind_param("sssss", $Nombres, $Direccion, $Telefono, $Cedula, $Correo, $estado);
             $stmt->execute();
             return $this->con->insert_id;
         } catch (Exception $th) {
@@ -60,12 +60,12 @@ class Clientes
     }
 
     // TODO: Actualizar un cliente existente en la base de datos
-    public function actualizar($idClientes, $Nombres, $Direccion, $Telefono, $Cedula, $Correo)
+    public function actualizar($idClientes, $Nombres, $Direccion, $Telefono, $Cedula, $Correo, $estado)
     {
         try {
             $query = "UPDATE clientes SET Nombres = ?, Direccion = ?, Telefono = ?, Cedula = ?, Correo = ? , estado = ? WHERE idClientes = ?";
             $stmt = $this->con->prepare($query);
-            $stmt->bind_param("sssssi", $Nombres, $Direccion, $Telefono, $Cedula, $Correo, $idClientes, $estado);
+            $stmt->bind_param("sssssi", $Nombres, $Direccion, $Telefono, $Cedula, $Correo, $estado, $idClientes);
             $stmt->execute();
             return $idClientes;
         } catch (Exception $th) {

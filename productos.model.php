@@ -65,7 +65,7 @@ class Productos
         try {
             $query = "UPDATE productos SET Codigo_Barras = ?, Nombre_Producto = ?, Graba_IVA = ?, estado = ? WHERE idProductos = ?";
             $stmt = $this->con->prepare($query);
-            $stmt->bind_param("ssii", $Codigo_Barras, $Nombre_Producto, $Graba_IVA, $idProductos, $estado);
+            $stmt->bind_param("ssii", $Codigo_Barras, $Nombre_Producto, $Graba_IVA, $estado, $idProductos);
             $stmt->execute();
             return $idProductos;
         } catch (Exception $th) {
